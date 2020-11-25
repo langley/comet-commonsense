@@ -21,3 +21,29 @@ RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then /opt/conda/bin/conda env up
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
+
+COPY . .
+
+RUN bash scripts/setup/get_atomic_data.sh \
+    scripts/setup/get_conceptnet_data.sh  \
+	scripts/setup/get_model_files.sh
+  
+RUN pip install tensorflow && \
+    pip install ftfy==5.1
+RUN conda install -c conda-forge spacy
+RUN python -m spacy download en
+RUN pip install tensorboardX && \
+    pip install tqdm && \
+    pip install pandas && \
+    pip install ipython 
+
+# These should probably be left to run at the command line
+#   or in the container once it is started.
+#   Perhaps a more specialized container will be created
+#   that does these preloads and other setup described
+#   in the COMET README.md [at](https://github.com/atcbosselut/comet-commonsense)
+# RUN python scripts/data/make_atomic_data_loader.py
+# RUN python scripts/data/make_conceptnet_data_loader.py
+
+
+

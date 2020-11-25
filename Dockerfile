@@ -6,15 +6,6 @@ RUN apt-get install -y bash
 
 COPY . .
 
-# Something like this is probably needed, see the conda note below.
-# Get conda installed, we need it later
-# RUN apt-get install -y wget && rm -rf /var/lib/apt/lists/*
-# RUN wget \
-#     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh  \
-#     && mkdir /root/.conda \
-#     && bash Miniconda3-latest-Linux-x86_64.sh -b \
-#     && rm -f Miniconda3-latest-Linux-x86_64.sh \
-
 RUN bash scripts/setup/get_atomic_data.sh \
     scripts/setup/get_conceptnet_data.sh  \
 	scripts/setup/get_model_files.sh
