@@ -27,12 +27,15 @@ COPY . .
 RUN bash scripts/setup/get_atomic_data.sh \
     scripts/setup/get_conceptnet_data.sh  \
 	scripts/setup/get_model_files.sh
-  
+
 RUN pip install torch && \
-    pip tensorflow && \
+    pip install tensorflow && \
     pip install ftfy==5.1
+
 RUN conda install -c conda-forge spacy
+
 RUN python -m spacy download en
+
 RUN pip install tensorboardX && \
     pip install tqdm && \
     pip install pandas && \
