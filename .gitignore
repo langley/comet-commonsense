@@ -3,3 +3,6 @@
 
 # ignore python c files, they're binary
 *.pyc
+
+# ignore atomic data processing result
+/data/atomic/processed
