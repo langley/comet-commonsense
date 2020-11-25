@@ -26,7 +26,6 @@ RUN pip install ftfy==5.1
 # Everything else is fine, but this use of conda is tricky.
 #   probably need to use miniconda and set things up like
 #   [this article](https://towardsdatascience.com/conda-pip-and-docker-ftw-d64fe638dc45)
-# RUN conda install -c conda-forge spacy
 # RUN python -m spacy download en
 
 RUN pip install tensorboardX
